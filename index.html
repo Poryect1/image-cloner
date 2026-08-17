@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image Cloner</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Image Cloner</h1>
+
+    <p>
+        Detectar una imagen y reemplazarla en tiempo real.
+    </p>
+
+    <button id="startCamera">
+        Iniciar cámara
+    </button>
+
+    <p id="status">
+        Cámara detenida
+    </p>
+
+    <video
+        id="video"
+        autoplay
+        playsinline
+        muted>
+    </video>
+
+    <canvas id="canvas"></canvas>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
