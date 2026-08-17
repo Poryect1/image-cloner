@@ -2,6 +2,20 @@ const startButton = document.getElementById("startCamera");
 const video = document.getElementById("video");
 const status = document.getElementById("status");
 
+const targetImage = new Image();
+
+targetImage.src = "assets/target.jpg";
+
+targetImage.onload = () => {
+    console.log("TARGET cargado correctamente");
+    console.log("Ancho:", targetImage.width);
+    console.log("Alto:", targetImage.height);
+};
+
+targetImage.onerror = () => {
+    console.error("No se pudo cargar target.jpg");
+};
+
 startButton.addEventListener("click", async () => {
 
     try {
