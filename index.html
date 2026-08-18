@@ -14,7 +14,7 @@
     <h1>Image Cloner</h1>
 
     <p>
-        Detectar una imagen y reemplazarla en tiempo real.
+        Usa una imagen como referencia y la cámara como fuente real.
     </p>
 
     <button id="startCamera">
@@ -25,14 +25,35 @@
         Cámara detenida
     </p>
 
-    <video
-        id="video"
-        autoplay
-        playsinline
-        muted>
-    </video>
+    <div class="workspace">
 
-    <canvas id="canvas"></canvas>
+        <div class="panel">
+            <h2>Imagen de referencia</h2>
+
+            <img
+                id="target"
+                src="assets/target.jpg"
+                alt="Imagen de referencia">
+        </div>
+
+        <div class="panel">
+            <h2>Cámara</h2>
+
+            <video
+                id="video"
+                autoplay
+                playsinline
+                muted>
+            </video>
+        </div>
+
+        <div class="panel">
+            <h2>Resultado</h2>
+
+            <canvas id="canvas"></canvas>
+        </div>
+
+    </div>
 
     <script src="app.js"></script>
 
