@@ -1,15 +1,15 @@
 const startButton = document.getElementById("startCamera");
 const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
 const status = document.getElementById("status");
+const targetImage = document.getElementById("target");
 
-const targetImage = new Image();
-
-targetImage.src = "assets/target.jpg";
+const ctx = canvas.getContext("2d");
 
 targetImage.onload = () => {
     console.log("TARGET cargado correctamente");
-    console.log("Ancho:", targetImage.width);
-    console.log("Alto:", targetImage.height);
+    console.log("Ancho:", targetImage.naturalWidth);
+    console.log("Alto:", targetImage.naturalHeight);
 };
 
 targetImage.onerror = () => {
@@ -31,6 +31,15 @@ startButton.addEventListener("click", async () => {
 
         status.textContent = "Cámara funcionando";
 
+        video.addEventListener("loadedmetadata", () => {
+
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
+            processVideo();
+
+        }, { once: true });
+
     } catch (error) {
 
         console.error(error);
@@ -41,3 +50,21 @@ startButton.addEventListener("click", async () => {
     }
 
 });
+
+
+function processVideo() {
+
+    if (video.readyState >= 2) {
+
+        ctx.drawImage(
+            video,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+    }
+
+    requestAnimationFrame(processVideo);
+}
